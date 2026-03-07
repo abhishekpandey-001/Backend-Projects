@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "firstName": "Aarav",
+    "lastName": "Sharma",
+    "company": "TechNova"
+  },
+  {
+    "id": 2,
+    "firstName": "Diya",
+    "lastName": "Verma",
+    "company": "InnoSoft"
+  },
+  {
+    "id": 3,
+    "firstName": "Rohan",
+    "lastName": "Gupta",
+    "company": "ByteCraft"
+  },
+  {
+    "id": 4,
+    "firstName": "Ananya",
+    "lastName": "Singh",
+    "company": "CloudNest"
+  },
+  {
+    "id": 5,
+    "firstName": "Kabir",
+    "lastName": "Mehta",
+    "company": "DataBridge"
+  },
+  {
+    "id": 6,
+    "firstName": "Ishita",
+    "lastName": "Kapoor",
+    "company": "NextWave"
+  },
+  {
+    "id": 7,
+    "firstName": "Arjun",
+    "lastName": "Patel",
+    "company": "PixelForge"
+  },
+  {
+    "id": 8,
+    "firstName": "Meera",
+    "lastName": "Joshi",
+    "company": "CodeSphere"
+  },
+  {
+    "id": 9,
+    "firstName": "Vivaan",
+    "lastName": "Reddy",
+    "company": "LogicLoop"
+  },
+  {
+    "id": 10,
+    "firstName": "Sara",
+    "lastName": "Khan",
+    "company": "DevMatrix"
+  }
+]

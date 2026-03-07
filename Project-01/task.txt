@@ -1,0 +1,12 @@
+REST API => JSON
+Will be using mock data for this project
+
+GET /users => show all the users through rendering an html document
+GET /api/users => Show all the users data in JSON format
+GET api/users/:id => Showing users based on their user IDs
+
+POST /api/users => Creating a new user
+
+PATCH /api/users/:id => Editing a user based on his user ID
+
+DELETE /api/users/:id => Deleting a user based on his user ID
