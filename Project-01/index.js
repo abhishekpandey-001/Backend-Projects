@@ -1,18 +1,37 @@
-const express = require('express')
+const express = require("express");
 const app = express();
 const PORT = 8000;
+const data = require('./data.json')
 
 //Defining routes and path of our express app
 
+//HTML render
+app.get("/users", (req, res) => {
+  const html = `<div>
+    <ul>
+    ${data.map((data) => `<li>${data.firstName}</>`).join('')}
+    </ul>
+    </div>`;
 
+  res.send(html);
+});
 
+//REST API points
+app.get("/api/users", (req, res)=>{
+    res.json(data)
+})
 
-
-
-
-
-
-
+app.route("/api/users/:id").get((req, res)=>{
+    const id = Number(req.params.id)
+    const user = data.find((user)=>user.id === id)
+    return res.json(user)
+}).put((req, res)=>{
+    //Edit user with his id
+    return res.json({status: "Pending"})
+}).delete((req, res)=>{
+    //Delete user with his id
+    return res.json({status: "Pending"})
+})
 
 //Setting up the server
-app.listen(PORT, ()=>console.log(`Server started at ${PORT}`));
+app.listen(PORT, () => console.log(`Server started at ${PORT}`));
