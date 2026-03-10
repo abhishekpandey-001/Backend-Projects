@@ -1,0 +1,72 @@
+Working with mongoose and mongodb
+
+Schema--->>> Define the structure using Schema
+Schema--->>> Using Schema we create a model
+Model--->>> Using a model we do CRUD operations
+
+Schema✅
+const userSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  jobTitle: {
+    type: String,
+  },
+  gender: {
+    type: String,
+  }
+})
+
+Model✅
+const userCollection = mongoose.model('user', userSchema)
+
+Connecting Mongoose with oouur Database✅
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log("MongoDB connected");
+
+    app.listen(process.env.PORT, () => {
+      console.log(`Server started at port ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => console.log("error occured: ", err));
+
+
+Understaning use of mongodb servers🎯
+
+Organization (unlimited, free)
+  └── Projects (unlimited, free)
+        └── Cluster — ⚠️ 1 free cluster per project (M0 tier)
+              └── Databases (unlimited, free)
+                    └── Collections (unlimited, free)
+
+
+Understanding backend application creation🎯
+
+Organization
+  ├── Project: App1
+  │     └── Cluster: app1-cluster
+  │           ├── db_development
+  │           └── db_production
+  │
+  ├── Project: App2
+  │     └── Cluster: app2-cluster
+  │           ├── db_development
+  │           └── db_production
+  │
+  └── Project: App3
+        └── Cluster: app3-cluster
+              ├── db_development
+              └── db_production
+
+
