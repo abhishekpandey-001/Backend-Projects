@@ -3,17 +3,14 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
+const userRouter = require("./routes/user");
+const logReqRes = require("./middlewares");
 
-//Creating Schema
-const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: false },
-  age: { type: Number, required: true },
-  role: { type: String, required: true },
-});
+//Middleware - Plugin
+app.use(logReqRes("log.txt"));
 
-//Creating the Model-> It will be saved as a collection in your database
-const Users = mongoose.model("user", userSchema);
+//Routes
+app.use("/user", userRouter);
 
 mongoose
   .connect(process.env.MONGO_URL)

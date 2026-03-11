@@ -1,1 +1,7 @@
 Creating a MVC pattern for nodejs applications
+Model View Controller is made up of three components-Model, View, and Controller
+
+Controller=>> Controller manipulates the Model
+Model=>> Model updates the view
+
+Controller--->>> Model--->>> View
