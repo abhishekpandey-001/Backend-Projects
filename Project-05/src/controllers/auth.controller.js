@@ -29,9 +29,13 @@ async function handleUserRegister(req, res) {
       password: hashedPassword,
     });
 
-    const token = jwt.sign({ id: user._id, email: user.email }, config.JWT_SECRET_KEY, {
-      expiresIn: "1d",
-    });
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      config.JWT_SECRET_KEY,
+      {
+        expiresIn: "1d",
+      },
+    );
 
     return res.status(201).json({
       message: "User has successfully been created",
@@ -48,6 +52,39 @@ async function handleUserRegister(req, res) {
   }
 }
 
+async function handleGetUser(req, res) {
+  try {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "Invalid or missing token" });
+    }
+
+     const token = authHeader.split(" ")[1];
+
+    const decoded = jwt.verify(token, config.JWT_SECRET_KEY);
+    const user = await userModel.findById(decoded.id);
+
+    if(!user){
+      return res.status(404).json({message: "User not found"})
+    }
+
+    return res.status(200).json({
+      message: "User fetched successfully",
+      user: { id: user._id, email: user.email, username: user.username },
+    });
+  } catch (err) {
+    console.log("Cannot fetch user", err);
+
+    if (err.name === "JsonWebTokenError" || err.name === "TokenExpiredError") {
+      return res.status(401).json({ message: "Invalid or expired token" });
+    }
+
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 module.exports = {
   handleUserRegister,
+  handleGetUser,
 };
